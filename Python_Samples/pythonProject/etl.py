@@ -11,6 +11,9 @@ def transform(legacy_data):
     return data
 
 
+# def transform(old):
+# 	return {value.lower(): key for key, values in old.items() for value in values}
+
 class EtlTest(unittest.TestCase):
     def test_single_letter(self):
         legacy_data = {1: ["A"]}
