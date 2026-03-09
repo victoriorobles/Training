@@ -23,10 +23,8 @@ def calculateMinSteps(inputStr):
 
     counter = 0
     item1 = inputStr[0]
-    item2 = ""
 
-    for index in range(1, len(inputStr)):
-        item2 = inputStr[index]
+    for item2 in inputStr[1:]:
         maximum, minimum = max(alpha_dict[item1], alpha_dict[item2]), min(alpha_dict[item1], alpha_dict[item2])
 
         # forward and reverse
