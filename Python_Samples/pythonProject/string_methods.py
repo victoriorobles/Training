@@ -48,10 +48,12 @@ def replace_word_choice(sentence, old_word, new_word):
     :param new_word: str - replacement word.
     :return: str - input sentence with new words in place of old words.
     """
+    result = ""
     if old_word in sentence:
         result = sentence.replace(old_word, new_word)
+    else:
+        return sentence
     return result
-
 
 class StringMethodsTest(unittest.TestCase):
     def test_capitalize_title(self):
@@ -96,5 +98,15 @@ class StringMethodsTest(unittest.TestCase):
         error_message = ('Called replace_word_choice("Animals are cool.", "cool", "awesome"). '
                          f'The function returned "{actual_result}", '
                          f'but the tests expected "{expected}" after the word replacement.')
+
+        self.assertEqual(actual_result, expected, msg=error_message)
+
+    def test_replace_words_with_a_synonym_2(self):
+        actual_result = replace_word_choice("Animals are cool.", "small", "tiny")
+        expected = "Animals are cool."
+        error_message = ('Called replace_word_choice("Animals are cool.", "small", "tiny"). '
+                         f'The function returned "{actual_result}", '
+                         f'but the tests expected "{expected}", because the word '
+                         'to be replaced is not in the sentence.')
 
         self.assertEqual(actual_result, expected, msg=error_message)
